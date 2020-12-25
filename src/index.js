@@ -4,9 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import * as firebaseui from 'firebaseui';
+
+import firebaseConfig from './firebaseConfig';
+
+firebase.initializeApp(firebaseConfig);
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App ui={ui} />
   </React.StrictMode>,
   document.getElementById('root')
 );

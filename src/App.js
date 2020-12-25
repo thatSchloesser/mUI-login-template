@@ -1,10 +1,10 @@
 import './App.css';
 import Login from './Login';
 
-function App() {
+function App(props) {
   return (
     <div className='App'>
-      <Login />
+      <Login ui={props.ui} />
     </div>
   );
 }

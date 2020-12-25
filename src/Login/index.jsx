@@ -7,18 +7,25 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-
 import LockOutlinedIcon from '@material-ui/icons/Lock';
 
+// import firebase from 'firebase/app';
+import "firebase/auth";
+// import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
+
+// eslint-disable-next-line
 import RawLogin from './RawLogin';
 import Copyright from './Copyright';
 
 import useStyles from './styles';
+import authConfig from './authConfig';
 
 
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
+  props.ui.start('#firebaseui-auth-container', authConfig);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -37,7 +44,9 @@ export default function Login() {
           </Typography>
           
           {/* INSERT LOGIN HERE */}
-          <RawLogin classes={classes} />
+          <div id="firebaseui-auth-container"></div>
+          <div id="loader">Loading...</div>
+          {/* <RawLogin classes={classes} /> */}
           <Box mt={5}>
             <Copyright />
           </Box>
